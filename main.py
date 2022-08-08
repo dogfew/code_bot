@@ -133,10 +133,10 @@ async def process_suggestion(message: types.Message, state: FSMContext):
         ads = data['ads']
     suggestion = message.text
     suggestions[ads] = suggestions.get(ads, [])
-    suggestions[ads].append(suggestion)
     if len(suggestions[ads]) > suggestions_lst_length:
         suggestions.pop(-1)
     if len(suggestion) <= suggestion_str_length:
+        suggestions[ads].append(suggestion)
         json.dump(suggestions, open("data/suggestions.json", "w+"), ensure_ascii=False)
     else:
         await message.reply("Превышен допустимый размер кода. Код не добавлен в базу")
