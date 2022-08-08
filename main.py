@@ -121,7 +121,7 @@ async def process_ads(message: types.Message, state: FSMContext):
 @dp.message_handler(state=Form.get_ads)
 async def process_ads_invalid(message: types.Message):
     markup = types.ReplyKeyboardMarkup(resize_keyboard=True, selective=True)
-    for i in difflib.get_close_matches(message.text, codes.keys(), cutoff=diff_const_search):
+    for i in difflib.get_close_matches(message.text, codes.keys(), cutoff=diff_const_search, n=3):
         markup.add(i)
     markup.add("Назад")
     await message.reply("Нет такого адреса, возможно, вы имели в виду:", reply_markup=markup)

@@ -9,7 +9,7 @@ comments = load(open("data/comments.json"))
 suggestions = load(open("data/suggestions.json"))
 
 """Константы"""
-diff_const = 0.9  # константа для difflib для автоматической выдачи ближайшего совпадения
+diff_const = 0.7  # константа для difflib для автоматической выдачи ближайшего совпадения
 diff_const_search = 0.3  # константа для difflib для поиска ближайших совпадений
 suggestions_lst_length = 15  # максимальное количество предлож. кодов
 comments_lst_length = 10  # максимальное количество комментов
