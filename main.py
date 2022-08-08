@@ -134,7 +134,7 @@ async def process_suggestion(message: types.Message, state: FSMContext):
     suggestion = message.text
     suggestions[ads] = suggestions.get(ads, [])
     suggestions[ads].append(suggestion)
-    if len(suggestions) > suggestions_lst_length:
+    if len(suggestions[ads]) > suggestions_lst_length:
         suggestions.pop(-1)
     if len(suggestion) <= suggestion_str_length:
         json.dump(suggestions, open("data/suggestions.json", "w+"), ensure_ascii=False)
@@ -149,7 +149,7 @@ async def process_comment(message: types.Message, state: FSMContext):
         ads = data['ads']
     comment = markdown.escape_md(message.text)  # to prevent parse entities error
     comments[ads] = comments.get(ads, [])
-    if len(comments) > comments_lst_length:
+    if len(comments[ads]) > comments_lst_length:
         comments.pop(-1)
     if len(comment) <= comment_str_length:
         comments[ads].append(comment)
